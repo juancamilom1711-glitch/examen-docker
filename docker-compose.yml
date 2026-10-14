@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  web:
+    image: camilo17opwe/examen:latest
+    ports:
+      - "8080:80"
+    restart: always
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: usuario
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: productos_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
